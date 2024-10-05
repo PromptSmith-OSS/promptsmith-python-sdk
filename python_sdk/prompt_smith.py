@@ -4,19 +4,25 @@ from .interfaces import PromptResponse
 
 import time
 
-duration = 60  # 60 seconds for caching
+default_ttl = 60  # 60 seconds for caching
 cache = {}
 
 
 class PromptSmith():
 
-    def __init__(self, base_url, api_key):
+    def __init__(self, base_url, api_key, ttl_in_seconds=60):
+        """
+        :param base_url:
+        :param api_key:
+        :param ttl_in_seconds:
+        """
         self.base_url = base_url
         self.api_key = api_key
+        self.ttl_in_seconds = ttl_in_seconds
 
     def get_prompt(self, unique_key: str) -> Optional[PromptResponse]:
         timestamp_key = f"{unique_key}-timestamp"
-        if unique_key in cache and time.time() < cache[timestamp_key] + duration:
+        if unique_key in cache and time.time() < cache[timestamp_key] + self.ttl_in_seconds:
             return cache[unique_key]
 
         url = f"{self.base_url}/api/sdk/prompt/{unique_key}"
