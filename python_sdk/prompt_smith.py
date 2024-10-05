@@ -10,9 +10,9 @@ class PromptSmith():
         self.api_key = api_key
 
     def get_prompt(self, unique_key: str) -> Optional[PromptResponse]:
-        url = f"{self.base_url}/prompt/{unique_key}"
+        url = f"{self.base_url}/api/sdk/prompt/{unique_key}"
         headers = {
-            "Authorization": f"{self.api_key}",
+            "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
         }
         response = requests.get(url, headers=headers)
