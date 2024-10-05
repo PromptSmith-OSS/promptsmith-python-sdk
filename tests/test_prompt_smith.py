@@ -1,7 +1,7 @@
 # test prompt smith client
 
 
-from python_sdk.prompt_smith import PromptSmith
+from promtsmithsdk.prompt_smith import PromptSmith
 
 
 def test_prompt_smith():
