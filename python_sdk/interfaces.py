@@ -1,6 +1,4 @@
-from typing import TypedDict
-
-from allauth.account.models import Optional
+from typing import TypedDict, Optional
 from uuid import UUID
 
 
