@@ -6,7 +6,7 @@ class PromptResponse(TypedDict):
     unique_key: str
     description: str
     uuid: UUID
-    name: int
+    name: str
     percentage: float
     content: str
     llm_model_name: Optional[str]
